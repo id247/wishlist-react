@@ -1,3 +1,5 @@
+import * as menuActions from '../actions/menu';
+
 export const FALSEXML_GET_PRODUCTS_START = 'FALSEXML_GET_PRODUCTS_START';
 export const FALSEXML_GET_PRODUCTS_SUCCESS = 'FALSEXML_GET_PRODUCTS_SUCCESS';
 export const FALSEXML_GET_PRODUCTS_FAIL = 'FALSEXML_GET_PRODUCTS_FAIL';
@@ -106,8 +108,11 @@ export function getFalseXML() {
 			//console.log(products);
 			dispatch(getFalseXMLSuccess(payload.products));
 			dispatch(setFalseXMLCategories(payload.categories));
+
+			dispatch(menuActions.menuSetCategory(payload.categories[0].id));
 		})
 		.catch( err => {
+			console.log(err);
 			dispatch(getFalseXMLFail());
 		});
 	}

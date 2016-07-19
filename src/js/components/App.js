@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
 import Loading from '../components/Loading';
-import Menu from '../components/Menu';
-import Products from '../components/Products';
+import Header from '../components/Header';
+import Main from '../components/Main';
 
 class App extends React.Component {
 
@@ -14,8 +14,9 @@ class App extends React.Component {
 			<div className="page">
 				<Loading mix="page__loader" />
 
-				<Menu />
-				<Products />
+				<Header mix="page__header" />
+				
+				<Main mix="page__main" />
 				
 			</div>
 		);
