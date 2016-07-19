@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import CatalogItem from '../components/CatalogItem';
+import CatalogItem from './CatalogItem';
 
 const Catalog = (props) => (
 	<div className={( (props.mix ? props.mix : '') + ' catalog')} id="catalog">

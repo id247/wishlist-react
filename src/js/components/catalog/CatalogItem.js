@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import * as wishlistActions from '../../actions/wishlist';
+
 const CatalogItem = (props) => (
 	<div className={( (props.mix ? props.mix : '') + ' catalog-item')}>
 
@@ -26,7 +28,11 @@ const CatalogItem = (props) => (
 			</div>
 
 			<div className="catalog-item__button-placeholder">
-				<button className="button button--orange button--m js-add-to-list">
+				<button 
+					className="button button--orange button--m"
+					onClick={(e) => props.addToWishlist(e, props.product)}
+					disabled={(props.wishlist.indexOf(props.product.id) > -1)}
+				>
 					Купить
 				</button>
 			</div>
@@ -37,9 +43,14 @@ const CatalogItem = (props) => (
 );
 
 const mapStateToProps = (state, ownProps) => ({
+	wishlist: state.wishlist,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
+	addToWishlist: (e, product) => {
+		e.preventDefault();
+		dispatch(wishlistActions.wishlistAddProduct(product));
+	},
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(CatalogItem);

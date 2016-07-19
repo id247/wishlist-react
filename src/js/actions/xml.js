@@ -1,4 +1,5 @@
 import * as menuActions from '../actions/menu';
+import * as wishlistActions from '../actions/wishlist';
 
 export const FALSEXML_GET_PRODUCTS_START = 'FALSEXML_GET_PRODUCTS_START';
 export const FALSEXML_GET_PRODUCTS_SUCCESS = 'FALSEXML_GET_PRODUCTS_SUCCESS';
@@ -64,7 +65,7 @@ export function getFalseXML() {
 						return;
 					}
 					//update if item alredy exists
-					const id = href.href.match(/id\/(\d+)\//)[1];
+					const id = parseInt(href.href.match(/id\/(\d+)\//)[1]);
 					const existingProduct = products.filter( product => (product.id == id) );
 					
 					if (existingProduct.length > 0){
@@ -110,6 +111,8 @@ export function getFalseXML() {
 			dispatch(setFalseXMLCategories(payload.categories));
 
 			dispatch(menuActions.menuSetCategory(payload.categories[0].id));
+			
+			dispatch(wishlistActions.wishlistGetFromCookies());
 		})
 		.catch( err => {
 			console.log(err);
