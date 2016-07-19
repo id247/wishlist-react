@@ -12,7 +12,7 @@ const configureStore = () => {
 								applyMiddleware(
 									thunkMiddleware,
 									loadingMiddleware,
-									loggerMiddleware({collapsed: true}),
+									loggerMiddleware({collapsed: true})
 								)	
 							);
 	return store;
