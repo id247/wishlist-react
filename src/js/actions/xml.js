@@ -42,6 +42,7 @@ export function setFalseXMLCategories(categories) {
 
 export function getFalseXML() {
 
+	//pseudo promise =) for future imlementation real fetch
 	function getFalseXML(){
 		
 		return new Promise( (resolve, reject) => {
