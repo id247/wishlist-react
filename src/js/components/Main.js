@@ -12,7 +12,12 @@ const Main = (props) => (
 			
 			<Catalog mix="main__catalog" />
 			
-			<Wishlist mix="main__wishlist" />
+			{(
+				props.wishlist.length > 0 
+				? <Wishlist mix="main__wishlist" /> 
+				: null
+			)}
+			
 
 		</div>
 
@@ -20,6 +25,7 @@ const Main = (props) => (
 );
 
 const mapStateToProps = (state, ownProps) => ({
+	wishlist: state.wishlist
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
