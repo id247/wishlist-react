@@ -47,11 +47,11 @@ describe('xml products', () => {
 		const action = { 
 			type: actions.FALSEXML_GET_PRODUCTS_SUCCESS,
 			payload: [
-				{id: 1, title: 'Товар', price: "156"}
+				{id: 1, title: 'Товар', price: '156'}
 			]
 		};
 		const stateAfter = [
-			{id: 1, title: 'Товар', price: "156"}
+			{id: 1, title: 'Товар', price: '156'}
 		];
 		
 		deepFreeze(stateBefore);

@@ -60,7 +60,8 @@
     "prod-html": "NODE_ENV=prod gulp prod-html",
     "prod-css": "NODE_ENV=prod gulp prod-css",
     "test": "mocha --recursive --compilers js:babel-core/register",
-    "test:watch": "npm test -- --watch"
+    "test:watch": "npm test -- --watch",
+    "lint": "eslint src/js/**"
   },
   "author": "",
   "license": "ISC"

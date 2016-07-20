@@ -42,7 +42,7 @@ describe('menu', () => {
 		const stateBefore = 0;
 		const action = { 
 			type: actions.MENU_SET_CATEGORY,
-			payload: "word"
+			payload: 'word'
 		};
 		const stateAfter = 0;
 		
