@@ -9,23 +9,20 @@ const Main = (props) => (
 	<section className={( (props.mix ? props.mix : '') + ' main')} id="main">
 
 		<div className="main__wrap wrap">
+
+			<h1 className="main__title">Товары для школы</h1>
 			
 			<Catalog mix="main__catalog" />
 			
-			{(
-				props.wishlist.length > 0 
-				? <Wishlist mix="main__wishlist" /> 
-				: null
-			)}
+			<Wishlist mix="main__wishlist" /> 
 			
-
 		</div>
 
 	</section>
 );
 
 const mapStateToProps = (state, ownProps) => ({
-	wishlist: state.wishlist
+
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

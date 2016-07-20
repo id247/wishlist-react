@@ -13,7 +13,7 @@ const Menu = (props) => (
 
 				<li className="menu__item" key={i}>
 					<a 	href={('#category-' + category.id)}
-						className={('menu__href link ' + (props.activeCategory === category.id ? 'menu__href--active' : ''))}
+						className={('menu__href ' + (category.icon ? 'menu__href--' + category.icon + ' ' : '') + (props.activeCategory === category.id ? 'menu__href--active' : ''))}
 						onClick={(e) => props.setCategory(e, category.id)}
 						>
 						{category.title}

@@ -6,10 +6,19 @@
 .body-container{
 	overflow: hidden;
 	position: relative;
+	min-height: 100vh;
+	background: #fff url(../images/bg/body.png) 0 0 repeat;
+
+	&__content{
+		background: #fff;
+		max-width: 1366px;
+		margin: auto;
+	}
 }
 
 .wrap{
-	max-width: 960px;
+	//max-width: 1290px;
+	padding: 0 20px;
 	margin: auto;
 	@include clearfix;
 }
@@ -51,6 +60,12 @@
 
 .header{
 	padding: 20px 0;
+	background: $blue;
+	color: #fff;
+
+	&__menu{
+		margin: 0 30px;
+	}
 }
 
 /* ==========================================================================
@@ -60,21 +75,60 @@
 .menu{
 
 	&__list{
-		margin: 0 0 -20px;
+		width: 100%;
+		margin: auto;
+		text-align: center;
+		display: table;
+		table-layout: fixed;
 	}
 
 	&__item{
-		display: inline-block;
-		vertical-align: top;
-		margin: 0 0 20px 15px;
+		padding: 0 10px;
+		display: table-cell;
 		&:first-child{
 			margin-left: 0;
 		}
 	}
 
 	&__href{
+		display: block;
+		max-width: 120px;
+		&:before{
+			content: '';
+			display: block;
+			margin: 0 auto 10px;
+		}
+
 		&--active{
 			border-color: transparent;
+		}
+
+		&--bags:before{
+			@include sprite($menu-bags);
+		}
+
+		&--stationery:before{
+			@include sprite($menu-stationery);
+		}
+
+		&--shoe-bags:before{
+			@include sprite($menu-shoe-bags);
+		}
+
+		&--diaries:before{
+			@include sprite($menu-diaries);
+		}
+
+		&--pen-cases:before{
+			@include sprite($menu-pen-cases);
+		}
+
+		&--folders:before{
+			@include sprite($menu-folders);
+		}
+
+		&--hobby:before{
+			@include sprite($menu-hobby);
 		}
 	}
 }
@@ -84,7 +138,15 @@
  * ========================================================================== */
 
 .main{
-	position: relative;
+	padding: 40px 0;
+
+	&__title{
+		text-align: center;
+		text-transform: uppercase;
+		color: $blue;
+		margin: 0 0 30px;
+		font-size: 35px;
+	}
 
 	&__catalog{
 		float: left;
@@ -123,12 +185,12 @@
 
 .catalog{
 
-	&__category{
-		
+	&__list{
+
 	}
 
 	&__item{
-		margin: 0 0 20px;
+		margin: 0 0 40px;
 		&:last-child{
 			margin-bottom: 0;
 		}
@@ -140,8 +202,11 @@
 
 	&__image-placeholder{
 		float: left;
-		width: 200px;
 		overflow: hidden;
+		border: 2px solid $blue;
+		border-radius: 15px;
+		width: 40%;
+		padding: 20px;
 	}
 
 	&__image{
@@ -150,32 +215,69 @@
 	}
 
 	&__content{
-		margin: 0 0 0 220px;
+		margin: 0 0 0 45%;
 	}
 
 	&__title{
 		margin: 0 0 20px;
-		font-size: 20px;
+		font-size: 19px;
+		font-weight: 700;
 		line-height: 1.4;
 	}
 
 	&__price{
+		display: inline-block;
 		margin: 0 0 20px;
 		font-size: 30px;
+		min-width: 320px;
 	}
 
 	&__text{
 		margin: 0 0 20px;
+		font-size: 16px;
 	}
 
 	&__button-placeholder{
 		text-align: center;
+		width: 320px;
 	}
 
 	&__button{
-		&--added{
-			background: #666;
+
+		&:disabled{
+			background: $green;
+			&:hover{
+				background: $green;
+			}
 		}
+	}
+}
+
+/* ==========================================================================
+ * catalog-price
+ * ========================================================================== */
+
+.catalog-price{
+	position: relative;
+
+	&:before{
+		content: '';
+		display: block;
+		float: right;
+		margin: 10px 0 0 10px;
+	}
+
+	&--ozon:before{
+		@include sprite($ozon);
+	}
+
+	&__price{
+		font-size: 39px;
+		font-weight: 700;
+	}
+
+	&__currency{
+		font-size: 23px;
 	}
 }
 
@@ -184,19 +286,60 @@
  * ========================================================================== */
 
 .wishlist{
-	
+	border: 2px solid $blue;
+	border-radius: 15px;
+	overflow: hidden;
+
+	&__title{
+		background: $blue;
+		color: #fff;
+		text-align: center;
+		font-size: 22px;
+		text-transform: uppercase;
+		padding: 7px 0 5px;
+	}
+
+	&__counter{
+		display: inline-block;
+		vertical-align: middle;
+		margin: -5px 0 0 10px;
+		@include sprite($star);
+		text-align: center;
+		line-height: 57px;
+		font-size: 16px;
+		color: $text;
+	}
+
+	&__content{
+		padding: 15px;
+	}
+
+	&__empty{
+		font-size: 19px;
+		text-align: center;
+		padding: 50px 0;
+	}
+
+	&__full{
+	}
+
 	&__list{
 		
 	}
 
 	&__item{
 		margin: 0 0 20px;
+		border: 1px solid $blue;
+		border-radius: 15px;
+		overflow: hidden;
+		padding: 10px;
 	}
 
 	&__total-price{
 		margin: 0 0 20px;
 		text-align: center;
-		font-size: 20px;
+		font-size: 33px;
+		font-weight: 700;
 	}
 
 	&__button-placeholder{
@@ -213,7 +356,7 @@
 
 	&__image-placeholder{
 		float: left;
-		width: 100px;
+		width: 110px;
 		overflow: hidden;
 	}
 
@@ -223,9 +366,10 @@
 	}
 
 	&__content{
-		margin: 0 0 0 110px;
+		margin: 0 0 0 120px;
 		position: relative;
 	}
+
 
 	&__price{
 		font-size: 18px;
@@ -236,16 +380,21 @@
 		margin: 0 0 15px 15px; 
 		font-size: 30px;
 		background: transparent;
-		//border: 0;
+		border: 0;
 		padding: 0;
 		line-height: 1;
 		display: block;
+		text-indent: -9999px;
+		cursor: pointer;
+		@include sprite($delete);
+		outline: none;
 	}
 
 	&__title{
 		margin: 0 0 20px;
-		font-size: 20px;
+		font-size: 16px;
 		line-height: 1.2;
+		font-weight: 700;
 	}
 
 

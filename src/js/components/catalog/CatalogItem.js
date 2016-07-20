@@ -14,26 +14,30 @@ const CatalogItem = (props) => (
 		<div className="catalog-item__content">
 
 			<h3 className="catalog-item__title">
-				<a className="catalog-item__link link" href={props.product.link} target="_blank">
+				{/* <a className="catalog-item__link link" href={props.product.link} target="_blank"> */}
 					{props.product.title}
-				</a>
+				{/* </a> */}
 			</h3>
 
-			<div className="catalog-item__price">
-				Цена: {props.product.price} {props.product.currency}
-			</div>
+			<div className="catalog-item__text" dangerouslySetInnerHTML={{__html: props.product.text}} />
 
-			<div className="catalog-item__text" dangerouslySetInnerHTML={{__html: props.product.text}}>
-				
+			<div className="catalog-item__price catalog-price catalog-price--ozon">
+				<span className="catalog-price__price">
+					{props.product.price} 
+				</span>
+				{' '}
+				<span className="catalog-price__curency">
+					{props.product.currency}
+				</span>
 			</div>
 
 			<div className="catalog-item__button-placeholder">
 				<button 
-					className="button button--orange button--m"
+					className="catalog-item__button button button--block button--orange button--m"
 					onClick={(e) => props.addToWishlist(e, props.product)}
-					disabled={(props.wishlist.indexOf(props.product.id) > -1)}
+					disabled={(props.isAddedToWishlist)}
 				>
-					Купить
+					{props.buttonText}
 				</button>
 			</div>
 
@@ -42,9 +46,15 @@ const CatalogItem = (props) => (
 	</div>
 );
 
-const mapStateToProps = (state, ownProps) => ({
-	wishlist: state.wishlist,
-});
+const mapStateToProps = (state, ownProps) => {
+	const isAddedToWishlist = state.wishlist.indexOf(ownProps.product.id) > -1;
+	const buttonText = isAddedToWishlist ? 'Добавлено' : 'Добавить в лист желаний';
+	return {
+		wishlist: state.wishlist,
+		isAddedToWishlist: isAddedToWishlist,
+		buttonText: buttonText,
+	}
+};
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
 	addToWishlist: (e, product) => {

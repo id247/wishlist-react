@@ -7,7 +7,7 @@ import CatalogItem from './CatalogItem';
 const Catalog = (props) => (
 	<div className={( (props.mix ? props.mix : '') + ' catalog')} id="catalog">
 
-		<ul className="catalog__category">
+		<ul className="catalog__list">
 
 			{props.products && props.products.map((product, i) => (
 				<CatalogItem 

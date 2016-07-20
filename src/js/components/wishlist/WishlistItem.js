@@ -21,13 +21,19 @@ const WishlistItem = (props) => (
 			</button>
 
 			<h3 className="wishlist-item__title">
-				<a className="wishlist-item__link link" href={props.product.link} target="_blank">
+				{/* <a className="wishlist-item__link link" href={props.product.link} target="_blank"> */}
 					{props.product.title}
-				</a>
+				{/* </a> */}
 			</h3>
 
-			<div className="wishlist-item__price">
-				Цена: {props.product.price} {props.product.currency}
+			<div className="wishlist-item__price catalog-price catalog-price--ozon">
+				<span className="catalog-price__price">
+					{props.product.price} 
+				</span>
+				{' '}
+				<span className="catalog-price__curency">
+					{props.product.currency}
+				</span>
 			</div>
 
 		</div>

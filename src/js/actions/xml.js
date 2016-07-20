@@ -56,8 +56,9 @@ export function getFalseXML() {
 				
 				const categoryId = parseInt(item.getAttribute('data-category-id'));
 				const categoryTitle = item.getAttribute('data-category-title');
+				const categoryIcon = item.getAttribute('data-category-icon');
 
-				categories.push({id: categoryId, title: categoryTitle});
+				categories.push({id: categoryId, title: categoryTitle, icon: categoryIcon});
 
 				[...tables].forEach( table => {
 					let href = table.querySelector('.OzonRev_detailName');
