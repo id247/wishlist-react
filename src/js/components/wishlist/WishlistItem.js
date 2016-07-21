@@ -17,15 +17,13 @@ const WishlistItem = (props) => (
 
 			<button 
 				className="wishlist-item__delete js-wishlist-delete"
-				onClick={(e) => props.removeFromWishlist(e, props.product)}
+				onClick={props.removeFromWishlist}
 			>
 				&times;
 			</button>
 
 			<h3 className="wishlist-item__title">
-				{/* <a className="wishlist-item__link link" href={props.product.link} target="_blank"> */}
-					{props.product.title}
-				{/* </a> */}
+				{props.product.title}
 			</h3>
 
 			<Price 
@@ -46,10 +44,9 @@ const mapStateToProps = (state, ownProps) => ({
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-
-	removeFromWishlist: (e, product) => {
+	removeFromWishlist: (e) => {
 		e.preventDefault();
-		dispatch(wishlistActions.wishlistDeleteProduct(product));
+		dispatch(wishlistActions.wishlistDeleteProduct(ownProps.product));
 	},
 });
 

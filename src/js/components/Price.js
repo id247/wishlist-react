@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-const Component = (props) => (
+const Price = (props) => (
 	<div className={( (props.mix ? props.mix : '') + ' catalog-price')}>
 		<div className="catalog-price__content">
 			<span className="catalog-price__price">
@@ -28,4 +28,4 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
 });
 
-export default connect(mapStateToProps, mapDispatchToProps)(Component);
+export default connect(mapStateToProps, mapDispatchToProps)(Price);

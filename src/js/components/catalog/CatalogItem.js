@@ -16,9 +16,7 @@ const CatalogItem = (props) => (
 		<div className="catalog-item__content">
 
 			<h3 className="catalog-item__title">
-				{/* <a className="catalog-item__link link" href={props.product.link} target="_blank"> */}
-					{props.product.title}
-				{/* </a> */}
+				{props.product.title}
 			</h3>
 
 			<div className="catalog-item__text" dangerouslySetInnerHTML={{__html: props.product.text}} />
@@ -35,7 +33,7 @@ const CatalogItem = (props) => (
 			<div className="catalog-item__button-placeholder">
 				<button 
 					className="catalog-item__button button button--block button--orange button--m"
-					onClick={(e) => props.addToWishlist(e, props.product)}
+					onClick={props.addToWishlist}
 					disabled={(props.isAddedToWishlist)}
 				>
 					{props.buttonText}
@@ -58,9 +56,9 @@ const mapStateToProps = (state, ownProps) => {
 };
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
-	addToWishlist: (e, product) => {
+	addToWishlist: (e) => {
 		e.preventDefault();
-		dispatch(wishlistActions.wishlistAddProduct(product));
+		dispatch(wishlistActions.wishlistAddProduct(ownProps.product));
 	},
 });
 

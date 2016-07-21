@@ -2,7 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import Menu from '../components/Menu';
+import Menu from '../components/menu/Menu';
 
 const Header = (props) => (
 	<header className={( (props.mix ? props.mix : '') + ' header')} id="header">
