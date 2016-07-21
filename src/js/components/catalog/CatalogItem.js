@@ -2,15 +2,21 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
-import Price from '../../components/Price';
+import CatalogPrice from '../../components/catalog/CatalogPrice';
+import CatalogImage from '../../components/catalog/CatalogImage';
 
 import * as wishlistActions from '../../actions/wishlist';
 
 const CatalogItem = (props) => (
 	<div className={( (props.mix ? props.mix : '') + ' catalog-item')}>
 
-		<div className="catalog-item__image-placeholder">
-			<img className="catalog-item__image" src={props.product.image} alt={props.product.title} />
+		<div className="catalog-item__image">
+
+			<CatalogImage
+				src={props.product.image} 
+				alt={props.product.title}
+			/>
+
 		</div>
 
 		<div className="catalog-item__content">
@@ -21,7 +27,7 @@ const CatalogItem = (props) => (
 
 			<div className="catalog-item__text" dangerouslySetInnerHTML={{__html: props.product.text}} />
 
-			<Price 
+			<CatalogPrice 
 				mix="catalog-item__price"
 				price={props.product.price} 
 				currency={props.product.currency} 

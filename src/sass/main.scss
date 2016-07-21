@@ -85,6 +85,7 @@
 	&__item{
 		padding: 0 10px;
 		display: table-cell;
+		vertical-align: top;
 		&:first-child{
 			margin-left: 0;
 		}
@@ -201,19 +202,12 @@
 .catalog-item{
 	@include clearfix;
 
-	&__image-placeholder{
+	&__image{
 		float: left;
 		border: 2px solid $blue;
 		border-radius: 15px;
-		width: 40%;
-		overflow: hidden;
+		width: 40%;	
 		padding: 20px;
-		text-align: center;
-	}
-
-	&__image{
-		max-width: 100%;
-		height: auto;
 	}
 
 	&__content{
@@ -252,6 +246,38 @@
 				background: $green;
 			}
 		}
+	}
+}
+
+/* ==========================================================================
+ * catalog-image
+ * ========================================================================== */
+
+.catalog-image{
+	position: relative;
+	text-align: center;
+	width: 100%;
+	padding: 0 0 100%;
+
+	&__inner{
+		position: absolute;
+		top: 0;
+		left: 0;
+		width: 100%;
+		height: 100%;
+		//right: 0;
+		//bottom: 0;
+		//padding: 20px;
+		//display: flex;
+		//justify-content: center;
+		//align-items: center;
+	}
+
+	&__image{
+		max-width: 100%;
+		max-height: 100%;
+		width: auto;
+		height: auto;
 	}
 }
 
@@ -391,20 +417,12 @@
 .wishlist-item{
 	@include clearfix;
 
-	&__image-placeholder{
+	&__image{
 		float: left;
 		width: 110px;
 		height: 110px;
-		overflow: hidden;
-		text-align: center;
 	}
 
-	&__image{
-		max-width: 100%;
-		max-height: 100%;
-		width: auto;
-		height: auto;
-	}
 
 	&__content{
 		margin: 0 0 0 120px;
