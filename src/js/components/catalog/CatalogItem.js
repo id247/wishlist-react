@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import Price from '../../components/Price';
+
 import * as wishlistActions from '../../actions/wishlist';
 
 const CatalogItem = (props) => (
@@ -21,15 +23,14 @@ const CatalogItem = (props) => (
 
 			<div className="catalog-item__text" dangerouslySetInnerHTML={{__html: props.product.text}} />
 
-			<div className="catalog-item__price catalog-price catalog-price--ozon">
-				<span className="catalog-price__price">
-					{props.product.price} 
-				</span>
-				{' '}
-				<span className="catalog-price__curency">
-					{props.product.currency}
-				</span>
-			</div>
+			<Price 
+				mix="catalog-item__price"
+				price={props.product.price} 
+				currency={props.product.currency} 
+				shop="OZON.RU" 
+				shopId="ozon" 
+				shopUrl={props.product.link} 
+			/>
 
 			<div className="catalog-item__button-placeholder">
 				<button 
