@@ -12,6 +12,7 @@ class Wishlist extends React.Component {
 	}
 	componentDidUpdate() {
 		this._updateCartVisibility();
+		this._popCart();
 	}
 	componentWillUnmount() {
 		window.removeEventListener('scroll', this._updateCartVisibility.bind(this));
@@ -47,6 +48,14 @@ class Wishlist extends React.Component {
 		}else{
 			cart.classList.add('wishlist__cart--visible');			
 		}
+	}
+
+	_popCart(){
+		const cart = this.refs.cart;
+		cart.classList.add('wishlist__cart--pop');
+		setTimeout( () => {
+			cart.classList.remove('wishlist__cart--pop');
+		}, 200);
 	}
 
 	render() {

@@ -362,10 +362,14 @@
 		top: 50%;
 		right: -50px;
 
-		transition: all .5s;
+		transition: right .5s, transform .2s;
 
 		&--visible{
 			right: 10px;
+		}
+
+		&--pop{
+			transform: scale(1.3);
 		}
 	}
 }
