@@ -10,7 +10,7 @@ const Main = (props) => (
 
 		<div className="main__wrap wrap">
 
-			<h1 className="main__title">Товары для школы</h1>
+			<h1 className="main__title">Топ товаров для школы</h1>
 			
 			<Catalog mix="main__catalog" />
 			

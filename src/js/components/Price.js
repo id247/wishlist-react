@@ -13,7 +13,10 @@ const Component = (props) => (
 				{props.currency}
 			</span>
 		</div>
-		<a href={props.shopUrl} className={('catalog-price__shop ' + (props.shopId ? 'catalog-price__shop--' + props.shopId : '') )}>
+		<a 	href={props.shopUrl} 
+			className={('catalog-price__shop ' + (props.shopId ? 'catalog-price__shop--' + props.shopId : '') )}
+			target="_blank"
+		>
 			{props.shop}
 		</a>
 	</div>

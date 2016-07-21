@@ -19,9 +19,9 @@ const WishlistFull = (props) => (
 
 		</ul>
 
-		<div className="wishlist__total-price" id="wishlist-total-price">
+		{/* <div className="wishlist__total-price" id="wishlist-total-price">
 			Итого: {props.totalPrice} руб
-		</div>
+		</div> */}
 
 		<div className="wishlist__button-placeholder">
 
@@ -38,6 +38,7 @@ const WishlistFull = (props) => (
 );
 
 const mapStateToProps = (state, ownProps) => ({
+	ozonLink: 'http://www.OZON.ru/?context=cart&id=' + state.wishlist.join(',') +  '&partner=dnevnik_ru',
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({

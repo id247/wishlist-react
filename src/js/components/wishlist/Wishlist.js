@@ -18,8 +18,6 @@ class Wishlist extends React.Component {
 	_scrollToWishlist(e) {
 		e.stopPropagation();
 		e.preventDefault();
-
-		const wishlist = this.refs.wishlist;
 		
 		function scrollTo(element, to, duration) {
 			if (duration <= 0) return;
@@ -33,7 +31,7 @@ class Wishlist extends React.Component {
 			}, 10);
 		}
 
-		scrollTo(document.body, wishlist.offsetTop, 600);
+		scrollTo(document.body, 0, 600);
 
 	}
 	
@@ -68,7 +66,6 @@ class Wishlist extends React.Component {
 						? <WishlistFull 
 							wishlist={props.wishlist} 
 							totalPrice={props.totalPrice} 
-							ozonLink={props.ozonLink} 
 						/> 
 						: <WishlistEmpty /> 
 					}
@@ -107,7 +104,6 @@ const mapStateToProps = (state, ownProps) => {
 		wishlist: wishlist,
 		totalPrice: totalPrice,
 		totalCount: totalCount,
-		ozonLink: 'http://www.OZON.ru/?context=cart&id=' + state.wishlist.join(',') +  '&partner=dnevnik_ru',
 	};
 };
 
