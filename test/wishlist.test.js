@@ -17,12 +17,19 @@ describe('wishlist', () => {
 	});
 
 	it('should handle WISHLIST_ADD_ITEM action', () => {
-		const stateBefore = [1,2,3];
+		const stateBefore = [
+			{id: 1, title: 'title1'},
+			{id: 2, title: 'title2'},
+		];
 		const action = { 
 			type: actions.WISHLIST_ADD_ITEM,
-			payload: 4
+			payload: {id: 3, title: 'title3'},
 		};
-		const stateAfter = [1,2,3,4];
+		const stateAfter = [
+			{id: 1, title: 'title1'},
+			{id: 2, title: 'title2'},
+			{id: 3, title: 'title3'},
+		];
 		
 		deepFreeze(stateBefore);
 		deepFreeze(stateAfter);
@@ -30,13 +37,19 @@ describe('wishlist', () => {
 		expect(wishlist(stateBefore, action)).to.deep.equal(stateAfter);
 	});
 
-	it('should return initial state if WISHLIST_ADD_ITEM payload is not an integer', () => {
-		const stateBefore = [1,2,3];
+	it('should return initial state if WISHLIST_ADD_ITEM payload is not an objecе', () => {
+		const stateBefore = [
+			{id: 1, title: 'title1'},
+			{id: 2, title: 'title2'},
+		];
 		const action = { 
 			type: actions.WISHLIST_ADD_ITEM,
-			payload: "word"
+			payload: 'something'
 		};
-		const stateAfter = [1,2,3];
+		const stateAfter = [
+			{id: 1, title: 'title1'},
+			{id: 2, title: 'title2'},
+		];
 		
 		deepFreeze(stateBefore);
 		deepFreeze(stateAfter);
@@ -45,12 +58,19 @@ describe('wishlist', () => {
 	});
 
 	it('should handle WISHLIST_DELETE_ITEM action', () => {
-		const stateBefore = [1,2,3,4];
+		const stateBefore = [
+			{id: 1, title: 'title1'},
+			{id: 2, title: 'title2'},
+			{id: 3, title: 'title3'},
+		];
 		const action = { 
 			type: actions.WISHLIST_DELETE_ITEM,
-			payload: 2
+			payload: 3
 		};
-		const stateAfter = [1,3,4];
+		const stateAfter = [
+			{id: 1, title: 'title1'},
+			{id: 2, title: 'title2'},
+		];
 		
 		deepFreeze(stateBefore);
 		deepFreeze(stateAfter);
@@ -74,12 +94,20 @@ describe('wishlist', () => {
 	});
 
 	it('should return initial state if WISHLIST_DELETE_ITEM payload is not an integer', () => {
-		const stateBefore = [1,2,3];
+		const stateBefore = [
+			{id: 1, title: 'title1'},
+			{id: 2, title: 'title2'},
+			{id: 3, title: 'title3'},
+		];
 		const action = { 
 			type: actions.WISHLIST_DELETE_ITEM,
-			payload: "word"
+			payload: 'word'
 		};
-		const stateAfter = [1,2,3];
+		const stateAfter = [
+			{id: 1, title: 'title1'},
+			{id: 2, title: 'title2'},
+			{id: 3, title: 'title3'},
+		];
 		
 		deepFreeze(stateBefore);
 		deepFreeze(stateAfter);
@@ -92,11 +120,15 @@ describe('wishlist', () => {
 		const action = { 
 			type: actions.WISHLIST_ADD_ITEMS,
 			payload: [
-				1566, 1567, 158
+				{id: 1, title: 'title1'},
+				{id: 2, title: 'title2'},
+				{id: 3, title: 'title3'},
 			]
 		};
 		const stateAfter = [
-			1566, 1567, 158
+			{id: 1, title: 'title1'},
+			{id: 2, title: 'title2'},
+			{id: 3, title: 'title3'},
 		];
 		
 		deepFreeze(stateBefore);
@@ -109,7 +141,7 @@ describe('wishlist', () => {
 		const stateBefore = [];
 		const action = { 
 			type: actions.WISHLIST_ADD_ITEMS,
-			payload: "word"
+			payload: 'word'
 		};
 		const stateAfter = [];
 		
@@ -119,11 +151,11 @@ describe('wishlist', () => {
 		expect(wishlist(stateBefore, action)).to.deep.equal(stateAfter);
 	});
 
-	it('should return initial state if WISHLIST_ADD_ITEMS payload is not an array of integers', () => {
+	it('should return initial state if WISHLIST_ADD_ITEMS payload is not an array of objects', () => {
 		const stateBefore = [];
 		const action = { 
 			type: actions.WISHLIST_ADD_ITEMS,
-			payload: ["word", "time"]
+			payload: ['word', 'time']
 		};
 		const stateAfter = [];
 		
@@ -133,13 +165,25 @@ describe('wishlist', () => {
 		expect(wishlist(stateBefore, action)).to.deep.equal(stateAfter);
 	});
 
-	it('should add only integers to state WISHLIST_ADD_ITEMS', () => {
+	it('should add only correct objects to state WISHLIST_ADD_ITEMS', () => {
 		const stateBefore = [];
 		const action = { 
 			type: actions.WISHLIST_ADD_ITEMS,
-			payload: ["word", 1, 2, {}]
+			payload: [
+				'word', 
+				1, 
+				2, 
+				{},			
+				{id: 1, title: 'title1'},
+				{id: 2, title: 'title2'},
+				{id: 3, title: 'title3'},
+			]
 		};
-		const stateAfter = [1, 2];
+		const stateAfter = [			
+			{id: 1, title: 'title1'},
+			{id: 2, title: 'title2'},
+			{id: 3, title: 'title3'},
+		];
 		
 		deepFreeze(stateBefore);
 		deepFreeze(stateAfter);

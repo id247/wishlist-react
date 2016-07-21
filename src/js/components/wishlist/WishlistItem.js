@@ -46,7 +46,7 @@ const mapStateToProps = (state, ownProps) => ({
 const mapDispatchToProps = (dispatch, ownProps) => ({
 	removeFromWishlist: (e) => {
 		e.preventDefault();
-		dispatch(wishlistActions.wishlistDeleteProduct(ownProps.product));
+		dispatch(wishlistActions.wishlistDeleteProduct(ownProps.product.id));
 	},
 });
 

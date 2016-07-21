@@ -62,11 +62,8 @@ class Wishlist extends React.Component {
 				<div className="wishlist__content">
 
 					{
-						parseInt(props.totalCount) > 0  
-						? <WishlistFull 
-							wishlist={props.wishlist} 
-							totalPrice={props.totalPrice} 
-						/> 
+						(props.totalCount) > 0  
+						? <WishlistFull /> 
 						: <WishlistEmpty /> 
 					}
 
@@ -87,25 +84,10 @@ class Wishlist extends React.Component {
 	}
 };
 
-const mapStateToProps = (state, ownProps) => {
-	const wishlist = [];
-	let totalPrice = 0;
-	let totalCount = 0;
-
-	state.xml.products.forEach( (product) => {
-		if (state.wishlist.indexOf(parseInt(product.id)) > -1){
-			wishlist.push(product);
-			totalPrice += parseInt(product.price);
-			totalCount++;
-		}
-	});
-
-	return {
-		wishlist: wishlist,
-		totalPrice: totalPrice,
-		totalCount: totalCount,
-	};
-};
+const mapStateToProps = (state, ownProps) => ({
+	wishlist: state.wishlist,
+	totalCount: parseInt(state.wishlist.length),
+});
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
 });

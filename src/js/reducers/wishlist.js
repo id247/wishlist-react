@@ -2,30 +2,33 @@
 
 import * as actions from '../actions/wishlist';
 
+function isCorrectItem(item){
+	return ( 	typeof item === 'object' 
+				&& item.id
+				&& Number.isInteger(item.id)
+			);
+}
+
 export function wishlist(state = [], action) {
 	switch (action.type) {
 		case actions.WISHLIST_ADD_ITEMS:
 			if (!Array.isArray(action.payload)){
 				return state;
 			}
-			const items = action.payload.filter( item => Number.isInteger(item) );
+			const items = action.payload.filter( item => isCorrectItem(item) );
 			return 	[...state, ...items];
 		
 		case actions.WISHLIST_ADD_ITEM:
-			if (!Number.isInteger(action.payload)){
+			if (!isCorrectItem(action.payload)){
 				return state;
 			}
 			return 	[...state, action.payload];
 		
 		case actions.WISHLIST_DELETE_ITEM:
-			const index = state.indexOf(action.payload);
-			if (index === -1){
+			if (!Number.isInteger(action.payload)){
 				return state;
-			}
-			return 	[
-					...state.slice(0, index), 
-					...state.slice(index + 1)
-					]; 
+			}		
+			return 	state.filter( (product) => ( product.id !== action.payload ) ); 
 
 		default:
 			return state;
@@ -33,7 +36,7 @@ export function wishlist(state = [], action) {
 }
 
 // export const wishlist = combineReducers({
-// 	list,
-// 	totalPrice,
+// 	ids,
+// 	products,
 // 	//ozonLink,
 // });

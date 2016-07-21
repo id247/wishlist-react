@@ -46,7 +46,7 @@ const CatalogItem = (props) => (
 );
 
 const mapStateToProps = (state, ownProps) => {
-	const isAddedToWishlist = state.wishlist.indexOf(ownProps.product.id) > -1;
+	const isAddedToWishlist = state.wishlist.indexOf(ownProps.product) > -1;
 	const buttonText = isAddedToWishlist ? 'Добавлено' : 'Добавить в лист желаний';
 	return {
 		wishlist: state.wishlist,
