@@ -8,11 +8,13 @@ import WishlistFull from './WishlistFull';
 class Wishlist extends React.Component {
 
 	componentDidMount() {
-		window.addEventListener('scroll', this._handleScroll.bind(this));
+		window.addEventListener('scroll', this._updateCartVisibility.bind(this));
 	}
-
+	componentDidUpdate() {
+		this._updateCartVisibility();
+	}
 	componentWillUnmount() {
-		window.removeEventListener('scroll', this._handleScroll.bind(this));
+		window.removeEventListener('scroll', this._updateCartVisibility.bind(this));
 	}
 
 	_scrollToWishlist(e) {
@@ -35,7 +37,7 @@ class Wishlist extends React.Component {
 
 	}
 	
-	_handleScroll(e) {
+	_updateCartVisibility() {
 		const cart = this.refs.cart;
 		const listBottom = this.refs.wishlist.getBoundingClientRect().bottom;
 		const cartTop = cart.getBoundingClientRect().top;

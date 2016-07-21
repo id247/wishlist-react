@@ -91,7 +91,8 @@
 	}
 
 	&__href{
-		display: block;
+		display: inline-block;
+		vertical-align: top;
 		max-width: 120px;
 		&:before{
 			content: '';

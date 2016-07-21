@@ -3,6 +3,17 @@ import deepFreeze from 'deep-freeze';
 import * as actions from '../src/js/actions/wishlist';
 import { wishlist } from '../src/js/reducers/wishlist';
 
+const items2 = [
+	{id: 1, title: 'title1'},
+	{id: 2, title: 'title2'},
+];
+
+const items3 = [
+	{id: 1, title: 'title1'},
+	{id: 2, title: 'title2'},
+	{id: 3, title: 'title3'},
+];
+
 describe('wishlist', () => {
 
 	it('should provide the initial state', () => {
@@ -17,19 +28,12 @@ describe('wishlist', () => {
 	});
 
 	it('should handle WISHLIST_ADD_ITEM action', () => {
-		const stateBefore = [
-			{id: 1, title: 'title1'},
-			{id: 2, title: 'title2'},
-		];
+		const stateBefore = items2;
 		const action = { 
 			type: actions.WISHLIST_ADD_ITEM,
 			payload: {id: 3, title: 'title3'},
 		};
-		const stateAfter = [
-			{id: 1, title: 'title1'},
-			{id: 2, title: 'title2'},
-			{id: 3, title: 'title3'},
-		];
+		const stateAfter = items3
 		
 		deepFreeze(stateBefore);
 		deepFreeze(stateAfter);
@@ -38,18 +42,12 @@ describe('wishlist', () => {
 	});
 
 	it('should return initial state if WISHLIST_ADD_ITEM payload is not an objecе', () => {
-		const stateBefore = [
-			{id: 1, title: 'title1'},
-			{id: 2, title: 'title2'},
-		];
+		const stateBefore = items2;
 		const action = { 
 			type: actions.WISHLIST_ADD_ITEM,
 			payload: 'something'
 		};
-		const stateAfter = [
-			{id: 1, title: 'title1'},
-			{id: 2, title: 'title2'},
-		];
+		const stateAfter = items2;
 		
 		deepFreeze(stateBefore);
 		deepFreeze(stateAfter);
@@ -58,19 +56,12 @@ describe('wishlist', () => {
 	});
 
 	it('should handle WISHLIST_DELETE_ITEM action', () => {
-		const stateBefore = [
-			{id: 1, title: 'title1'},
-			{id: 2, title: 'title2'},
-			{id: 3, title: 'title3'},
-		];
+		const stateBefore = items3;
 		const action = { 
 			type: actions.WISHLIST_DELETE_ITEM,
 			payload: 3
 		};
-		const stateAfter = [
-			{id: 1, title: 'title1'},
-			{id: 2, title: 'title2'},
-		];
+		const stateAfter = items2;
 		
 		deepFreeze(stateBefore);
 		deepFreeze(stateAfter);
@@ -79,13 +70,13 @@ describe('wishlist', () => {
 	});
 
 
-	it('should retur initial state if i try to delete non existing item', () => {
-		const stateBefore = [1,2,3,4];
+	it('should return initial state if i try to delete non existing item', () => {
+		const stateBefore = items3;
 		const action = { 
 			type: actions.WISHLIST_DELETE_ITEM,
 			payload: 7
 		};
-		const stateAfter = [1,2,3,4];
+		const stateAfter = items3;
 		
 		deepFreeze(stateBefore);
 		deepFreeze(stateAfter);
@@ -94,20 +85,12 @@ describe('wishlist', () => {
 	});
 
 	it('should return initial state if WISHLIST_DELETE_ITEM payload is not an integer', () => {
-		const stateBefore = [
-			{id: 1, title: 'title1'},
-			{id: 2, title: 'title2'},
-			{id: 3, title: 'title3'},
-		];
+		const stateBefore = items3;
 		const action = { 
 			type: actions.WISHLIST_DELETE_ITEM,
 			payload: 'word'
 		};
-		const stateAfter = [
-			{id: 1, title: 'title1'},
-			{id: 2, title: 'title2'},
-			{id: 3, title: 'title3'},
-		];
+		const stateAfter = items3;
 		
 		deepFreeze(stateBefore);
 		deepFreeze(stateAfter);
@@ -119,17 +102,9 @@ describe('wishlist', () => {
 		const stateBefore = [];
 		const action = { 
 			type: actions.WISHLIST_ADD_ITEMS,
-			payload: [
-				{id: 1, title: 'title1'},
-				{id: 2, title: 'title2'},
-				{id: 3, title: 'title3'},
-			]
+			payload: items3
 		};
-		const stateAfter = [
-			{id: 1, title: 'title1'},
-			{id: 2, title: 'title2'},
-			{id: 3, title: 'title3'},
-		];
+		const stateAfter = items3;
 		
 		deepFreeze(stateBefore);
 		deepFreeze(stateAfter);
@@ -179,11 +154,7 @@ describe('wishlist', () => {
 				{id: 3, title: 'title3'},
 			]
 		};
-		const stateAfter = [			
-			{id: 1, title: 'title1'},
-			{id: 2, title: 'title2'},
-			{id: 3, title: 'title3'},
-		];
+		const stateAfter = items3;
 		
 		deepFreeze(stateBefore);
 		deepFreeze(stateAfter);

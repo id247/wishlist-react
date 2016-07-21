@@ -4,8 +4,7 @@ import { bindActionCreators } from 'redux';
 
 const WishlistEmpty = (props) => (
 	<div className="wishlist__empty">
-		Отложите товары <br/>
-		и они появятся в этом списке!
+		Добавьте товары в список
 	</div>
 );
 
