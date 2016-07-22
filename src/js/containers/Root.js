@@ -12,8 +12,7 @@ class Root extends React.Component {
 	componentWillMount() {
 		const { dispatch } = this.props.store;
 
-		dispatch(xmlActions.getFalseXML());		
-		
+		dispatch(xmlActions.getFalseXML());				
 	}
 
 	render() {

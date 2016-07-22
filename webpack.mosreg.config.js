@@ -3,10 +3,6 @@
 var webpack = require('webpack');
 var path = require('path');
 
-var node_modules = path.resolve(__dirname, 'node_modules');
-var pathToReact = path.resolve(node_modules, 'react/dist/react.min.js');
-var pathToReactDOM = path.resolve(node_modules, 'react-dom/dist/react-dom.min.js');
-
 var appSettings = path.resolve(__dirname, 'src/js/settings/dnevnik.js');
 
 module.exports = {
@@ -23,16 +19,12 @@ module.exports = {
 		modulesDirectories: ['node_modules', 'my_modules'],
 		extentions: ['', '.js'],
 		alias: {
-		  'react': pathToReact,
-		  'react-dom': pathToReactDOM,
 		  'appSettings': appSettings
 		}
 	},
 
 	module: {
 		noParse: [
-		   pathToReact,
-		   pathToReactDOM,
 		],
 		loaders: [
 			{   test: /\.js$/, 
