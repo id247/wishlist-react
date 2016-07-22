@@ -6,16 +6,21 @@ import WishlistEmpty from './WishlistEmpty';
 import WishlistFull from './WishlistFull';
 
 class Wishlist extends React.Component {
+	
+	constructor(props){
+    	super(props);
+    	this._updateCartVisibility = this._updateCartVisibility.bind(this);  
+	}
 
 	componentDidMount() {
-		window.addEventListener('scroll', this._updateCartVisibility.bind(this));
+		document.addEventListener('scroll', this._updateCartVisibility);
 	}
 	componentDidUpdate() {
 		this._updateCartVisibility();
 		this._popCart();
 	}
 	componentWillUnmount() {
-		window.removeEventListener('scroll', this._updateCartVisibility.bind(this));
+		document.removeEventListener('scroll', this._updateCartVisibility);
 	}
 
 	_scrollToWishlist(e) {
@@ -40,6 +45,11 @@ class Wishlist extends React.Component {
 	
 	_updateCartVisibility() {
 		const cart = this.refs.cart;
+				
+		if (!cart){
+			//return;
+		}
+
 		const listBottom = this.refs.wishlist.getBoundingClientRect().bottom;
 		const cartTop = cart.getBoundingClientRect().top;
 		

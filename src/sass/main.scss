@@ -166,6 +166,11 @@
 		font-size: 35px;
 	}
 
+	&__content{
+		overflow: hidden;
+		margin: 0 0 100px;
+	}
+
 	&__catalog{
 		float: left;
 		width: 60%;
@@ -174,6 +179,10 @@
 	&__wishlist{
 		float: right;
 		width: 35%;
+	}
+
+	&__button-placeholder{
+		text-align: center;
 	}
 }
 

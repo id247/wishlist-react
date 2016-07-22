@@ -38,7 +38,7 @@ const CatalogItem = (props) => (
 
 			<div className="catalog-item__button-placeholder">
 				<button 
-					className="catalog-item__button button button--block button--orange button--m"
+					className="catalog-item__button button button--block button--yellow button--m"
 					onClick={props.addToWishlist}
 					disabled={(props.isAddedToWishlist)}
 				>

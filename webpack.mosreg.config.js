@@ -32,6 +32,7 @@ module.exports = {
 	module: {
 		noParse: [
 		   pathToReact,
+		   pathToReactDOM,
 		],
 		loaders: [
 			{   test: /\.js$/, 
