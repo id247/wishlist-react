@@ -5,12 +5,14 @@ import { bindActionCreators } from 'redux';
 import * as menuActions from '../../actions/menu';
 
 const MenuItem = (props) => (
-	<li className="menu__item">
+	<li className={'menu__item ' + (props.activeCategory === props.category.id ? 'menu__item--active' : '')}>
 		<a 	href={('#category-' + props.category.id)}
 			className={('menu__href ' + (props.category.icon ? 'menu__href--' + props.category.icon + ' ' : '') + (props.activeCategory === props.category.id ? 'menu__href--active' : ''))}
 			onClick={props.setCategory}
 			>
-			{props.category.title}
+			<span className="menu__text">
+				{props.category.title}
+			</span>
 		</a>
 	</li>
 );

@@ -55,7 +55,7 @@ class Wishlist extends React.Component {
 		cart.classList.add('wishlist__cart--pop');
 		setTimeout( () => {
 			cart.classList.remove('wishlist__cart--pop');
-		}, 200);
+		}, 300);
 	}
 
 	render() {
@@ -87,6 +87,9 @@ class Wishlist extends React.Component {
 				>
 					<div className="wishlist-cart__counter">
 						{props.totalCount}
+					</div>
+					<div className="wishlist-cart__text">
+						К списку
 					</div>
 				</a>
 

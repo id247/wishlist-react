@@ -59,12 +59,15 @@
  * ========================================================================== */
 
 .header{
-	padding: 20px 0;
 	background: $blue;
 	color: #fff;
 
+	&__wrap{
+		padding: 0;
+	}
+
 	&__menu{
-		margin: 0 30px;
+		//margin: 0 30px;
 	}
 }
 
@@ -83,26 +86,29 @@
 	}
 
 	&__item{
-		padding: 0 10px;
 		display: table-cell;
+		height: 30px;
 		vertical-align: top;
+		
 		&:first-child{
 			margin-left: 0;
 		}
 	}
 
 	&__href{
-		display: inline-block;
-		vertical-align: top;
-		max-width: 120px;
+		display: block;
+		height: calc( 100% + 40px );
+		padding: 20px 10px;
+		transition: all .2s;
 		&:before{
 			content: '';
 			display: block;
 			margin: 0 auto 10px;
 		}
 
+		&:hover,
 		&--active{
-			border-color: transparent;
+			background: #15b6e7;
 		}
 
 		&--bags:before{
@@ -132,6 +138,11 @@
 		&--hobby:before{
 			@include sprite($menu-hobby);
 		}
+	}
+
+	&__text{
+		max-width: 120px;
+		display: inline-block;
 	}
 }
 
@@ -386,31 +397,57 @@
 	&__cart{
 		position: fixed;
 		top: 50%;
-		right: -50px;
+		right: -100px;
 
 		transition: right .5s, transform .2s;
 
 		&--visible{
-			right: 10px;
+			right: 15px;
 		}
 
 		&--pop{
-			transform: scale(1.3);
+			animation: pop .2s;
 		}
 	}
 }
 
-.wishlist-cart{
-	width: 40px;
-	height: 40px;
-	line-height: 43px;
-	border-radius: 50%;
-	background: $blue;
-	color: #fff;
-	text-align: center;
+@keyframes pop {
+    0%  {transform: none;}
+    50% {transform: scale(1.3);}
+    100% {transform: none;}
+}
 
+.wishlist-cart{
+	
 	&__counter{
-		font-size: 20px;
+		width: 60px;
+		height: 60px;
+		line-height: 1;
+		padding: 32px 0 0;
+		color: #fff;
+		text-align: center;
+		margin: 0 auto 5px;
+		position: relative;
+		font-size: 22px;
+		z-index: 1;
+		&:before{
+			content: '';
+			position: absolute;
+			top: 0;
+			left: 0;  
+			width: 0;
+			height: 0;
+			border-style: solid;
+			border-width: 0 30px 60px 30px;
+			border-color: transparent transparent $blue transparent;
+			z-index: -1;
+		}
+	}
+
+	&__text{
+		font-size: 16px;
+		color: $blue;
+		font-weight: 700;
 	}	
 }
 
