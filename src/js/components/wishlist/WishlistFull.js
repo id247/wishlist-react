@@ -22,7 +22,7 @@ const WishlistFull = (props) => (
 		<div className="wishlist__button-placeholder">
 
 			<a 	href={props.ozonLink} 
-				className="wishlist__button button button--orange button--m" 
+				className="wishlist__button button button--yellow button--m" 
 				target="_blank"
 			>
 				Купить на OZON.RU
