@@ -84,6 +84,8 @@ export function getFalseXML() {
 						text: table.querySelector('.OzonRev_detailAnnot').innerHTML,
 						price: table.querySelector('.OzonRev_priceValue > b').innerHTML,
 						currency: table.querySelector('.OzonRev_priceCurrency').innerHTML,
+						shopName: 'OZON.RU',
+						shopId: 'ozon',
 
 					}
 					products.push(product);				

@@ -4,12 +4,14 @@ import { bindActionCreators } from 'redux';
 
 import WishlistEmpty from './WishlistEmpty';
 import WishlistFull from './WishlistFull';
+import WishlistCart from './WishlistCart';
 
 class Wishlist extends React.Component {
 	
 	constructor(props){
     	super(props);
     	this._updateCartVisibility = this._updateCartVisibility.bind(this);  
+    	this._scrollToWishlist = this._scrollToWishlist.bind(this);  
 	}
 
 	componentDidMount() {
@@ -70,6 +72,7 @@ class Wishlist extends React.Component {
 
 	render() {
 		const { props } = this;
+		const content = props.totalCount > 0 ? <WishlistFull /> : <WishlistEmpty /> 
 		return (
 			<div className={( (props.mix ? props.mix : '') + ' wishlist')} id="wishlist" ref="wishlist">
 
@@ -81,35 +84,28 @@ class Wishlist extends React.Component {
 				</h3>
 
 				<div className="wishlist__content">
-
-					{
-						(props.totalCount) > 0  
-						? <WishlistFull /> 
-						: <WishlistEmpty /> 
-					}
-
+					
+					{content}
+				
 				</div>
 
-				<a 	href="#wishlist" 
-					className="wishlist__cart wishlist-cart" 
-					ref="cart"
-					onClick={this._scrollToWishlist.bind(this)}
-				>
-					<div className="wishlist-cart__counter">
-						{props.totalCount}
-					</div>
-					<div className="wishlist-cart__text">
-						К списку
-					</div>
-				</a>
+				<div className="wishlist__cart" ref="cart">
+					<WishlistCart 
+						totalCount={props.totalCount}
+						onClickHandler={this._scrollToWishlist}
+					/>
+				</div>
 
 			</div>
 		);
 	}
 };
 
+Wishlist.propTypes = {
+	mix: React.PropTypes.string,
+};
+
 const mapStateToProps = (state, ownProps) => ({
-	wishlist: state.wishlist,
 	totalCount: parseInt(state.wishlist.length),
 });
 

@@ -1,71 +1,63 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
-import CatalogPrice from '../../components/catalog/CatalogPrice';
-import CatalogImage from '../../components/catalog/CatalogImage';
+import CatalogPrice from '../../components/common/CatalogPrice';
+import CatalogImage from '../../components/common/CatalogImage';
 
-import * as wishlistActions from '../../actions/wishlist';
+const CatalogItem = (props) => {
 
-const CatalogItem = (props) => (
-	<div className={( (props.mix ? props.mix : '') + ' catalog-item')}>
+	const buttonText = props.isAddedToWishlist ? 'Добавлено' : 'Добавить в список желаний';
+	
+	return (
+		<div className={( (props.mix ? props.mix : '') + ' catalog-item')}>
 
-		<div className="catalog-item__image">
+			<div className="catalog-item__image">
 
-			<CatalogImage
-				src={props.product.image} 
-				alt={props.product.title}
-			/>
+				<CatalogImage
+					src={props.product.image} 
+					alt={props.product.title}
+				/>
 
-		</div>
+			</div>
 
-		<div className="catalog-item__content">
+			<div className="catalog-item__content">
 
-			<h3 className="catalog-item__title">
-				{props.product.title}
-			</h3>
+				<h3 className="catalog-item__title">
+					{props.product.title}
+				</h3>
 
-			<div className="catalog-item__text" dangerouslySetInnerHTML={{__html: props.product.text}} />
+				<div className="catalog-item__text" dangerouslySetInnerHTML={{__html: props.product.text}} />
 
-			<CatalogPrice 
-				mix="catalog-item__price"
-				price={props.product.price} 
-				currency={props.product.currency} 
-				shop="OZON.RU" 
-				shopId="ozon" 
-				shopUrl={props.product.link} 
-			/>
+				<CatalogPrice 
+					mix="catalog-item__price"
+					price={parseInt(props.product.price)} 
+					currency={props.product.currency} 
+					shopName={props.product.shopName} 
+					shopId={props.product.shopId} 
+					shopUrl={props.product.link} 
+				/>
 
-			<div className="catalog-item__button-placeholder">
-				<button 
-					className="catalog-item__button button button--block button--yellow button--m"
-					onClick={props.addToWishlist}
-					disabled={(props.isAddedToWishlist)}
-				>
-					{props.buttonText}
-				</button>
+				<div className="catalog-item__button-placeholder">
+					<button 
+						className="catalog-item__button button button--block button--yellow button--m"
+						onClick={props.addToWishlistHandler}
+						disabled={(props.isAddedToWishlist)}
+					>
+						{buttonText}
+					</button>
+				</div>
+
 			</div>
 
 		</div>
-
-	</div>
-);
-
-const mapStateToProps = (state, ownProps) => {
-	const isAddedToWishlist = state.wishlist.indexOf(ownProps.product) > -1;
-	const buttonText = isAddedToWishlist ? 'Добавлено' : 'Добавить в список желаний';
-	return {
-		wishlist: state.wishlist,
-		isAddedToWishlist: isAddedToWishlist,
-		buttonText: buttonText,
-	}
+	)
 };
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-	addToWishlist: (e) => {
-		e.preventDefault();
-		dispatch(wishlistActions.wishlistAddProduct(ownProps.product));
-	},
-});
+CatalogItem.propTypes = {
+	mix: React.PropTypes.string,
+	product: React.PropTypes.object.isRequired,
+	isAddedToWishlist: React.PropTypes.bool.isRequired,
+	addToWishlistHandler: React.PropTypes.func.isRequired,
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(CatalogItem);
+
+export default CatalogItem;

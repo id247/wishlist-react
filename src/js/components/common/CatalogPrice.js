@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 const Price = (props) => (
 	<div className={( (props.mix ? props.mix : '') + ' catalog-price')}>
@@ -17,15 +15,19 @@ const Price = (props) => (
 			className={('catalog-price__shop ' + (props.shopId ? 'catalog-price__shop--' + props.shopId : '') )}
 			target="_blank"
 		>
-			{props.shop}
+			{props.shopName}
 		</a>
 	</div>
 );
 
-const mapStateToProps = (state, ownProps) => ({
-});
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-});
+Price.propTypes = {
+	mix: React.PropTypes.string,
+	price: React.PropTypes.number.isRequired,
+	currency: React.PropTypes.string.isRequired,
+	shopName: React.PropTypes.string.isRequired,
+	shopId: React.PropTypes.string.isRequired,
+	shopUrl: React.PropTypes.string.isRequired,
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(Price);
+export default Price;

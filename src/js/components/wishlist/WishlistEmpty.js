@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 const WishlistEmpty = (props) => (
 	<div className="wishlist__empty">
@@ -8,10 +6,7 @@ const WishlistEmpty = (props) => (
 	</div>
 );
 
-const mapStateToProps = (state, ownProps) => ({
-});
+WishlistEmpty.propTypes = {
+};
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(WishlistEmpty);
+export default WishlistEmpty;

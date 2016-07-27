@@ -1,11 +1,7 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
-import CatalogImage from '../../components/catalog/CatalogImage';
-import CatalogPrice from '../../components/catalog/CatalogPrice';
-
-import * as wishlistActions from '../../actions/wishlist';
+import CatalogImage from '../../components/common/CatalogImage';
+import CatalogPrice from '../../components/common/CatalogPrice';
 
 const WishlistItem = (props) => (
 	<div className={( (props.mix ? props.mix : '') + ' wishlist-item')}>
@@ -23,7 +19,7 @@ const WishlistItem = (props) => (
 
 			<button 
 				className="wishlist-item__delete js-wishlist-delete"
-				onClick={props.removeFromWishlist}
+				onClick={props.removeFromWishlistHandler}
 			>
 				&times;
 			</button>
@@ -34,10 +30,10 @@ const WishlistItem = (props) => (
 
 			<CatalogPrice 
 				mix="wishlist-item__price"
-				price={props.product.price} 
+				price={parseInt(props.product.price)} 
 				currency={props.product.currency} 
-				shop="OZON.RU" 
-				shopId="ozon" 
+				shopName={props.product.shopName} 
+				shopId={props.product.shopId} 
 				shopUrl={props.product.link} 
 			/>
 
@@ -46,14 +42,11 @@ const WishlistItem = (props) => (
 	</div>
 );
 
-const mapStateToProps = (state, ownProps) => ({
-});
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-	removeFromWishlist: (e) => {
-		e.preventDefault();
-		dispatch(wishlistActions.wishlistDeleteProduct(ownProps.product.id));
-	},
-});
+WishlistItem.propTypes = {
+	mix: React.PropTypes.string,
+	product: React.PropTypes.object.isRequired,
+	removeFromWishlistHandler: React.PropTypes.func.isRequired,
+};
 
-export default connect(mapStateToProps, mapDispatchToProps)(WishlistItem);
+export default WishlistItem;

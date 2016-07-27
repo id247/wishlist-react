@@ -2,6 +2,8 @@ import React from 'react';
 import { connect } from 'react-redux';
 import { bindActionCreators } from 'redux';
 
+import * as wishlistActions from '../../actions/wishlist';
+
 import WishlistItem from './WishlistItem';
 
 const WishlistFull = (props) => (
@@ -14,6 +16,10 @@ const WishlistFull = (props) => (
 					key={i}	
 					mix="wishlist__item"
 					product={product} 
+					removeFromWishlistHandler={(e) => {
+						e.preventDefault();
+						props.removeFromWishlist(product.id);						
+					}} 
 				/>
 			))}
 
@@ -33,12 +39,18 @@ const WishlistFull = (props) => (
 	</div>
 );
 
+WishlistFull.propTypes = {
+};
+
 const mapStateToProps = (state, ownProps) => ({
 	ozonLink: 'http://www.OZON.ru/?context=cart&id=' + state.wishlist.map( item => item.id).join(',') +  '&partner=dnevnik_ru',
 	wishlist: state.wishlist,
 });
 
 const mapDispatchToProps = (dispatch, ownProps) => ({
+	removeFromWishlist: (productId) => {
+		dispatch(wishlistActions.wishlistDeleteProduct(productId));		
+	},
 });
 
 export default connect(mapStateToProps, mapDispatchToProps)(WishlistFull);

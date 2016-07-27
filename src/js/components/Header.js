@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import Menu from '../components/menu/Menu';
 
@@ -16,11 +14,9 @@ const Header = (props) => (
 	</header>
 );
 
-const mapStateToProps = (state, ownProps) => ({
-});
+Header.propTypes = {
+	mix: React.PropTypes.string,
+};
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Header);
+export default Header;
 

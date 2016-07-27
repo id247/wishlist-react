@@ -1,6 +1,4 @@
 import React from 'react';
-import { connect } from 'react-redux';
-import { bindActionCreators } from 'redux';
 
 import Catalog from '../components/catalog/Catalog';
 import Wishlist from '../components/wishlist/Wishlist';
@@ -37,11 +35,9 @@ const Main = (props) => (
 	</section>
 );
 
-const mapStateToProps = (state, ownProps) => ({
+Main.propTypes = {
+	mix: React.PropTypes.string,
+};
 
-});
 
-const mapDispatchToProps = (dispatch, ownProps) => ({
-});
-
-export default connect(mapStateToProps, mapDispatchToProps)(Main);
+export default Main;
