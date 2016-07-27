@@ -3,11 +3,11 @@ import React from 'react';
 import Menu from '../components/menu/Menu';
 
 const Header = (props) => (
-	<header className={( (props.mix ? props.mix : '') + ' header')} id="header">
+	<header className={( (props.mixClass ? props.mixClass : '') + ' header')} id="header">
 
 		<div className="header__wrap wrap">
 
-			<Menu mix="header__menu" />
+			<Menu mixClass="header__menu" />
 
 		</div>
 
@@ -15,7 +15,7 @@ const Header = (props) => (
 );
 
 Header.propTypes = {
-	mix: React.PropTypes.string,
+	mixClass: React.PropTypes.string,
 };
 
 export default Header;

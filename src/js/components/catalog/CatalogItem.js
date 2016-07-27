@@ -8,7 +8,7 @@ const CatalogItem = (props) => {
 	const buttonText = props.isAddedToWishlist ? 'Добавлено' : 'Добавить в список желаний';
 	
 	return (
-		<div className={( (props.mix ? props.mix : '') + ' catalog-item')}>
+		<div className={( (props.mixClass ? props.mixClass : '') + ' catalog-item')}>
 
 			<div className="catalog-item__image">
 
@@ -28,7 +28,7 @@ const CatalogItem = (props) => {
 				<div className="catalog-item__text" dangerouslySetInnerHTML={{__html: props.product.text}} />
 
 				<CatalogPrice 
-					mix="catalog-item__price"
+					mixClass="catalog-item__price"
 					price={parseInt(props.product.price)} 
 					currency={props.product.currency} 
 					shopName={props.product.shopName} 
@@ -53,7 +53,7 @@ const CatalogItem = (props) => {
 };
 
 CatalogItem.propTypes = {
-	mix: React.PropTypes.string,
+	mixClass: React.PropTypes.string,
 	product: React.PropTypes.object.isRequired,
 	isAddedToWishlist: React.PropTypes.bool.isRequired,
 	addToWishlistHandler: React.PropTypes.func.isRequired,

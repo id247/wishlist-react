@@ -7,14 +7,14 @@ import * as wishlistActions from '../../actions/wishlist';
 import CatalogItem from './CatalogItem';
 
 const Catalog = (props) => (
-	<div className={( (props.mix ? props.mix : '') + ' catalog')} id="catalog">
+	<div className={( (props.mixClass ? props.mixClass : '') + ' catalog')} id="catalog">
 
 		<ul className="catalog__list">
 
 			{props.products && props.products.map((product, i) => (
 				<CatalogItem 
 					key={i}	
-					mix="catalog__item"
+					mixClass="catalog__item"
 					product={product} 
 					isAddedToWishlist={props.wishlist.indexOf(product) > -1} 
 					addToWishlistHandler={(e) =>{
@@ -30,7 +30,7 @@ const Catalog = (props) => (
 );
 
 Catalog.propTypes = {
-	mix: React.PropTypes.string,
+	mixClass: React.PropTypes.string,
 };
 
 const mapStateToProps = (state, ownProps) => ({

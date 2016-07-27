@@ -20,13 +20,13 @@ class App extends React.Component {
 		return (
 			<div className="page">
 				<Loading 
-					mix="page__loader" 
+					mixClass="page__loader" 
 					loading={props.loading}
 				/>
 
-				<Header mix="page__header" />
+				<Header mixClass="page__header" />
 				
-				<Main mix="page__main" />
+				<Main mixClass="page__main" />
 				
 			</div>
 		);

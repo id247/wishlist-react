@@ -1,7 +1,7 @@
 import React from 'react';
 
 const Price = (props) => (
-	<div className={( (props.mix ? props.mix : '') + ' catalog-price')}>
+	<div className={( (props.mixClass ? props.mixClass : '') + ' catalog-price')}>
 		<div className="catalog-price__content">
 			<span className="catalog-price__price">
 				{props.price} 
@@ -22,7 +22,7 @@ const Price = (props) => (
 
 
 Price.propTypes = {
-	mix: React.PropTypes.string,
+	mixClass: React.PropTypes.string,
 	price: React.PropTypes.number.isRequired,
 	currency: React.PropTypes.string.isRequired,
 	shopName: React.PropTypes.string.isRequired,

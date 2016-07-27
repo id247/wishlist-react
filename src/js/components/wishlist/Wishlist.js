@@ -74,7 +74,7 @@ class Wishlist extends React.Component {
 		const { props } = this;
 		const content = props.totalCount > 0 ? <WishlistFull /> : <WishlistEmpty /> 
 		return (
-			<div className={( (props.mix ? props.mix : '') + ' wishlist')} id="wishlist" ref="wishlist">
+			<div className={( (props.mixClass ? props.mixClass : '') + ' wishlist')} id="wishlist" ref="wishlist">
 
 				<h3 className="wishlist__title">
 					ДОБАВЛЕННЫЕ ТОВАРЫ
@@ -102,7 +102,7 @@ class Wishlist extends React.Component {
 };
 
 Wishlist.propTypes = {
-	mix: React.PropTypes.string,
+	mixClass: React.PropTypes.string,
 };
 
 const mapStateToProps = (state, ownProps) => ({

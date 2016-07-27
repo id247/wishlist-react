@@ -4,7 +4,7 @@ import Catalog from '../components/catalog/Catalog';
 import Wishlist from '../components/wishlist/Wishlist';
 
 const Main = (props) => (
-	<section className={( (props.mix ? props.mix : '') + ' main')} id="main">
+	<section className={( (props.mixClass ? props.mixClass : '') + ' main')} id="main">
 
 		<div className="main__wrap wrap">
 
@@ -12,9 +12,9 @@ const Main = (props) => (
 
 			<div className="main__content">
 			
-				<Catalog mix="main__catalog" />
+				<Catalog mixClass="main__catalog" />
 				
-				<Wishlist mix="main__wishlist" /> 
+				<Wishlist mixClass="main__wishlist" /> 
 
 			</div>
 
@@ -36,7 +36,7 @@ const Main = (props) => (
 );
 
 Main.propTypes = {
-	mix: React.PropTypes.string,
+	mixClass: React.PropTypes.string,
 };
 
 

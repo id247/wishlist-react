@@ -7,7 +7,7 @@ import MenuItem from '../../components/menu/MenuItem';
 import * as menuActions from '../../actions/menu';
 
 const Menu = (props) => (
-	<div className={( (props.mix ? props.mix : '') + ' menu')} id="menu">
+	<div className={( (props.mixClass ? props.mixClass : '') + ' menu')} id="menu">
 
 		<ul className="menu__list">
 
@@ -31,7 +31,7 @@ const Menu = (props) => (
 );
 
 Menu.propTypes = {
-	mix: React.PropTypes.string,
+	mixClass: React.PropTypes.string,
 };
 
 const mapStateToProps = (state, ownProps) => ({

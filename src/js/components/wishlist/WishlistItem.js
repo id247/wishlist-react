@@ -4,7 +4,7 @@ import CatalogImage from '../../components/common/CatalogImage';
 import CatalogPrice from '../../components/common/CatalogPrice';
 
 const WishlistItem = (props) => (
-	<div className={( (props.mix ? props.mix : '') + ' wishlist-item')}>
+	<div className={( (props.mixClass ? props.mixClass : '') + ' wishlist-item')}>
 
 		<div className="wishlist-item__image">
 			
@@ -29,7 +29,7 @@ const WishlistItem = (props) => (
 			</h3>
 
 			<CatalogPrice 
-				mix="wishlist-item__price"
+				mixClass="wishlist-item__price"
 				price={parseInt(props.product.price)} 
 				currency={props.product.currency} 
 				shopName={props.product.shopName} 
@@ -42,9 +42,8 @@ const WishlistItem = (props) => (
 	</div>
 );
 
-
 WishlistItem.propTypes = {
-	mix: React.PropTypes.string,
+	mixClass: React.PropTypes.string,
 	product: React.PropTypes.object.isRequired,
 	removeFromWishlistHandler: React.PropTypes.func.isRequired,
 };
