@@ -19,7 +19,7 @@ const Catalog = (props) => (
 					isAddedToWishlist={props.wishlist.indexOf(product) > -1} 
 					addToWishlistHandler={(e) =>{
 						e.preventDefault();
-						props.addToWishlist(product)
+						props.addToWishlist(product);
 					}} 
 				/>
 			))}
